@@ -15,32 +15,50 @@ public class AlphaBetaSearching {
     public Move bestMove;
     final int player;
     final int opponent;
-//    private AlphaBetaSearch alphaBeta;
+    //    private AlphaBetaSearch alphaBeta;
     protected TranspositionTable transpositionTable = null;
+    final int maxDepth;
 
-    public AlphaBetaSearching(final Context context, final Game game, final int player) {
+    public AlphaBetaSearching(final Context context, final Game game, final int player, int maxDepth) {
         this.context = context;
         this.game = game;
         this.player = player;
+        this.maxDepth = maxDepth;
         if (player == 1) this.opponent = 2;
         else this.opponent = 1;
+
+//        System.out.println("Player is " + player);
+
+
 //        this.alphaBeta = new AlphaBetaSearch();
     }
 
     public int heuristic(Context context, int depth) {
-        if (!(depth == 0)) {
-            int tower = context.state().owned().positions(player)[1].size();
-            int pawns = context.state().owned().positions(player)[0].size();
+        int myTower = context.state().owned().positions(player)[1].size();
+        int myPawns = context.state().owned().positions(player)[0].size();
 
-            if (tower == 0 && pawns != 15) return -100;
-            else return 100;
-        } else {
-            return -context.state().owned().positions(opponent)[0].size()-context.state().owned().positions(player)[0].size();
-        }
+
+//        int myMovesCount = context.game().moves(context).count();
+
+        int enemyTower = context.state().owned().positions(opponent)[1].size();
+        int enemyPawns = context.state().owned().positions(opponent)[0].size();
+
+        if (myTower == 0)
+            return -100;
+        if (enemyTower == 0)
+            return 100;
+
+        return myPawns - enemyPawns;
+//        if (!(depth == 0)) {
+//            if (tower == 0 && pawns != 15) return -100;
+//            else return 100;
+//        } else {
+//            return -context.state().owned().positions(opponent)[0].size() + context.state().owned().positions(player)[0].size();
+//        }
 
     }
 
-    public int testH(Context context, int depth)  {
+    public int testH(Context context, int depth) {
         if (!(depth == 0)) {
             return 100;
         } else return 10;
@@ -48,47 +66,46 @@ public class AlphaBetaSearching {
 
     public int NegaMax(Context context, int depth, int alpha, int beta) {
         if (depth == 0 || context.trial().over()) {
-            return testH(context, depth);
-        } else {
-            Game game = context.game();
-            FastArrayList<Move> moves = game.moves(context).moves();
-            this.bestMove = moves.get(0);
-            int numLegalMoves = moves.size();
-            Context copyContext;
-            int value;
-            int score = Integer.MIN_VALUE;
-            Move currentMove;
-            int i = 0;
-            int maxAlpha = alpha;
+            return heuristic(context, depth);
+        }
 
-            while (true) {
-                if (i < numLegalMoves) {
-                    currentMove = (Move)moves.get(i);
-//                    copyContext = alphaBeta.copyContext(context);
-                    copyContext = new Context(context);
+        Game game = context.game();
+        FastArrayList<Move> moves = game.moves(context).moves();
+//        this.bestMove = moves.get(0);
+        int numLegalMoves = moves.size();
+        Context copyContext;
+        int value;
+        int score = Integer.MIN_VALUE;
+        Move currentMove;
+        int i = 0;
+        int maxAlpha = alpha;
 
-                    // apply the move
-                    game.apply(copyContext, currentMove);
-                    value = -1 * this.NegaMax(copyContext, depth - 1, -beta, -maxAlpha);
+        for (Move move : moves) {
 
-                    if (value > score) {
-                        this.bestMove = currentMove;
-                        score = value;
-                    }
+            Context mContext = context.deepCopy();
+            mContext.game().apply(mContext, move);
 
-                    if (score > alpha) {
-                        maxAlpha = score;
-                    }
+            value = -1 * this.NegaMax(mContext, depth - 1, -beta, -maxAlpha);
+            if (value > score) {
+                if (depth == maxDepth) {
+                    this.bestMove = move;
 
-                    if (score >= beta) {
-                        ++i;
-                        continue;
-                    }
                 }
-                System.out.println("Best move now is: " + this.bestMove);
-                return score;
+                score = value;
+            }
+
+            if (score > alpha) {
+                maxAlpha = score;
+            }
+
+            if (score >= beta) {
+                break;
             }
         }
+
+        return score;
+
+
     }
 
 //    public int AlphaSearcher(Context context, int depth, int alpha, int beta, int maxPlayer) {
@@ -175,7 +192,6 @@ public class AlphaBetaSearching {
 //        } else return -context.state().owned().positions(opponent)[0].size()-context.state().owned().positions(maxPlayer)[0].size();
 //    }
 }
-
 
 
 //    public static class Node {

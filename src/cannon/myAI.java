@@ -47,8 +47,8 @@ public class myAI extends AI{
                         !wantsInterrupt								// Respect GUI user clicking the pause button
         )
         {
-            ab = new AlphaBetaSearching(context, game, player);
-            ab.NegaMax(context, 3, Integer.MIN_VALUE, Integer.MAX_VALUE);
+            ab = new AlphaBetaSearching(context, game, player, 4);
+            ab.NegaMax(context, 4, Integer.MIN_VALUE, Integer.MAX_VALUE);
         }
         System.out.println("The best move is: " + ab.bestMove);
         return ab.bestMove;

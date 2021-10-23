@@ -37,17 +37,17 @@
     "SearchTime_8": 1,
     "AI_10": {
         "AI": {"algorithm": "My AI"},
-        "constructor": "cannon.runLudii$$Lambda$15/0x0000000840064c40@5881d9ec"
+        "constructor": "cannon.runLudii$$Lambda$14/0x0000000840065040@36935fb1"
     },
     "SearchTime_9": 1,
     "AI_11": {
         "AI": {"algorithm": "My AI"},
-        "constructor": "cannon.runLudii$$Lambda$15/0x0000000840064c40@5881d9ec"
+        "constructor": "cannon.runLudii$$Lambda$14/0x0000000840065040@36935fb1"
     },
     "drawCornerConvexCells": false,
     "SearchTime_6": 1,
     "SearchTime_7": 1,
-    "LoadedFromMemory": true,
+    "LoadedFromMemory": false,
     "SearchTime_4": 1,
     "SearchTime_5": 1,
     "SearchTime_2": 1,
@@ -60,7 +60,7 @@
     "SearchTime_13": 1,
     "AI_16": {
         "AI": {"algorithm": "My AI"},
-        "constructor": "cannon.runLudii$$Lambda$15/0x0000000840064c40@5881d9ec"
+        "constructor": "cannon.runLudii$$Lambda$14/0x0000000840065040@36935fb1"
     },
     "NoRepetition": false,
     "SearchTime_14": 1,
@@ -68,24 +68,25 @@
     "SearchTime_11": 1,
     "AI_14": {
         "AI": {"algorithm": "My AI"},
-        "constructor": "cannon.runLudii$$Lambda$15/0x0000000840064c40@5881d9ec"
+        "constructor": "cannon.runLudii$$Lambda$14/0x0000000840065040@36935fb1"
     },
     "SearchTime_12": 1,
     "AI_15": {
         "AI": {"algorithm": "My AI"},
-        "constructor": "cannon.runLudii$$Lambda$15/0x0000000840064c40@5881d9ec"
+        "constructor": "cannon.runLudii$$Lambda$14/0x0000000840065040@36935fb1"
     },
     "ShowConnections": false,
     "AI_12": {
         "AI": {"algorithm": "My AI"},
-        "constructor": "cannon.runLudii$$Lambda$15/0x0000000840064c40@5881d9ec"
+        "constructor": "cannon.runLudii$$Lambda$14/0x0000000840065040@36935fb1"
     },
     "SearchTime_10": 1,
     "AI_13": {
         "AI": {"algorithm": "My AI"},
-        "constructor": "cannon.runLudii$$Lambda$15/0x0000000840064c40@5881d9ec"
+        "constructor": "cannon.runLudii$$Lambda$14/0x0000000840065040@36935fb1"
     },
     "drawMajorVertices": false,
+    "SavedLudLastModifiedTime": "2021-10-23T10:47:18.698732Z",
     "drawCornerConvexVertices": false,
     "drawNeighboursVertices": false,
     "Names_9": "Player 9",
@@ -95,15 +96,16 @@
     "drawBottomVertices": false,
     "drawBottomCells": false,
     "ShowFaceCoordinates": false,
-    "RecentGames_2": "Surakarta",
-    "RecentGames_1": "/home/elisha/Documents/ISG/Cannon.lud",
-    "FrameWidth": 1024,
+    "RecentGames_2": "/home/elisha/Documents/ISG/Cannon.lud",
+    "RecentGames_1": "Tic-Tac-Toe",
+    "RecentGames_3": "Surakarta",
+    "FrameWidth": 1339,
     "drawSlashEdges": false,
     "drawCornersCells": false,
     "OptionStrings": [],
     "drawLeftEdges": false,
     "drawAngledEdges": false,
-    "RecentGames_0": "Tic-Tac-Toe",
+    "RecentGames_0": "/home/al/IdeaProjects/cannon2/resources/luds/Cannon.lud",
     "drawDistanceCells": false,
     "drawPerimeterVertices": false,
     "drawBottomEdges": false,
@@ -122,7 +124,7 @@
     "ShowRepetitions": false,
     "drawCenterVertices": false,
     "MenuNames_9": "My AI",
-    "savedLudName": "/lud/board/space/line/Tic-Tac-Toe.lud",
+    "savedLudName": "/home/al/IdeaProjects/cannon2/resources/luds/Cannon.lud",
     "FlatBoard": false,
     "ShowFaceIndices": false,
     "coordWithOutline": false,
@@ -135,7 +137,7 @@
     "MenuNames_0": "Human",
     "MenuNames_1": "My AI",
     "testLudeme2": "",
-    "MenuNames_2": "Alpha-Beta",
+    "MenuNames_2": "Random",
     "testLudeme3": "",
     "MenuNames_3": "My AI",
     "MenuNames_4": "My AI",
@@ -151,7 +153,7 @@
     "showZoomBox": false,
     "ShowIndices": false,
     "ShowEdgeCoordinates": false,
-    "FrameHeight": 576,
+    "FrameHeight": 790,
     "ShowBoard": true,
     "HideAiMoves": true,
     "ShowEdgeIndices": false,
@@ -163,30 +165,30 @@
     "IllegalMoves": false,
     "drawRightEdges": false,
     "drawMinorCells": false,
-    "ShowPossibleMoves": false,
+    "ShowPossibleMoves": true,
     "AI_5": {
         "AI": {"algorithm": "My AI"},
-        "constructor": "cannon.runLudii$$Lambda$15/0x0000000840064c40@5881d9ec"
+        "constructor": "cannon.runLudii$$Lambda$14/0x0000000840065040@36935fb1"
     },
     "ShowContainerIndices": false,
     "drawPerimeterCells": false,
     "AI_6": {
         "AI": {"algorithm": "My AI"},
-        "constructor": "cannon.runLudii$$Lambda$15/0x0000000840064c40@5881d9ec"
+        "constructor": "cannon.runLudii$$Lambda$14/0x0000000840065040@36935fb1"
     },
     "AI_3": {
         "AI": {"algorithm": "My AI"},
-        "constructor": "cannon.runLudii$$Lambda$15/0x0000000840064c40@5881d9ec"
+        "constructor": "cannon.runLudii$$Lambda$14/0x0000000840065040@36935fb1"
     },
     "AI_4": {
         "AI": {"algorithm": "My AI"},
-        "constructor": "cannon.runLudii$$Lambda$15/0x0000000840064c40@5881d9ec"
+        "constructor": "cannon.runLudii$$Lambda$14/0x0000000840065040@36935fb1"
     },
     "AI_1": {
         "AI": {"algorithm": "My AI"},
-        "constructor": "cannon.runLudii$$Lambda$15/0x0000000840064c40@5881d9ec"
+        "constructor": "cannon.runLudii$$Lambda$14/0x0000000840065040@36935fb1"
     },
-    "AI_2": {"AI": {"algorithm": "Alpha-Beta"}},
+    "AI_2": {"AI": {"algorithm": "Random"}},
     "ShowLastMove": false,
     "NoRepetitionWithinTurn": false,
     "drawCornersVertices": false,
@@ -218,15 +220,15 @@
     "drawCornerConcaveCells": false,
     "AI_9": {
         "AI": {"algorithm": "My AI"},
-        "constructor": "cannon.runLudii$$Lambda$15/0x0000000840064c40@5881d9ec"
+        "constructor": "cannon.runLudii$$Lambda$14/0x0000000840065040@36935fb1"
     },
     "drawPhasesCells": false,
     "AI_7": {
         "AI": {"algorithm": "My AI"},
-        "constructor": "cannon.runLudii$$Lambda$15/0x0000000840064c40@5881d9ec"
+        "constructor": "cannon.runLudii$$Lambda$14/0x0000000840065040@36935fb1"
     },
     "AI_8": {
         "AI": {"algorithm": "My AI"},
-        "constructor": "cannon.runLudii$$Lambda$15/0x0000000840064c40@5881d9ec"
+        "constructor": "cannon.runLudii$$Lambda$14/0x0000000840065040@36935fb1"
     }
 }
