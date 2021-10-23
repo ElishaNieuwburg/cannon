@@ -1,0 +1,168 @@
+(define "AdjacentEnemy"
+    (not
+        (all Sites
+            (sites Around (from) All)
+            if:(not (is Enemy (who at:(site))))
+        )
+    )
+)
+
+(define "Retreat"
+    (move
+        Hop
+        (directions { Backward BL BR } of:All)
+        (between if:(is Empty (between))) 
+        (to
+            if:(and (is Empty (to)) ("AdjacentEnemy"))
+        )
+    )
+)
+
+(define "CaptureEnemy"
+    (move
+        Step 
+        (directions {Leftward Rightward Forward FL FR}) 
+        (to 
+            if:(is Enemy (who at:(to)))
+            (apply (remove (to)))
+        )
+    )
+)
+
+(define "SlideCannon"
+    (move
+        Hop
+        All
+        (between
+            (exact 2)
+            if:(is Friend (who at:(between)))
+        )
+        (to
+            if:(is Empty (to))
+        )
+    )
+)
+
+(define "IsBehindTwoSoldiers" 
+    (and 
+        (= (id "Pawn" Mover) (what at:("AheadSite")))
+        (= (id "Pawn" Mover) (what at:("AheadSite" steps:2)))
+    
+    )
+)
+
+(define "AheadSite" (ahead (from) #1 (directions Vertex from:(from) to:(to))))
+
+
+(define "Shoot"
+    (forEach Direction (directions {Forwards Backwards} of:All)
+        (if
+            (and 
+                ("IsBehindTwoSoldiers")
+                (is Empty ("AheadSite" steps:3))
+            )
+            (if
+                (is Enemy (who at:("AheadSite" steps:4)))
+                (move Remove ("AheadSite" steps:4))
+            )
+        )
+    )
+)
+
+(define "LongShoot"
+    (forEach Direction (directions {Forwards Backwards} of:All)
+        (if
+            (and 
+                ("IsBehindTwoSoldiers")
+                (and
+                    (is Empty ("AheadSite" steps:3))
+                    (is Empty ("AheadSite" steps:4))
+                )
+            )
+            (if
+                (is Enemy (who at:("AheadSite" steps:5)))
+                (move Remove ("AheadSite" steps:5))
+            )
+        )
+    )
+)
+
+
+(define "FallenTown"
+    (= (count Pieces "Town") 1 )
+)
+
+//------------------------------------------------------------------------------
+
+(game "Cannon"
+    (players { (player N) (player S) })
+    (equipment
+        {
+            (board (square 10) use:Vertex)
+
+            (piece "Pawn" Each
+                (or {
+                    (move
+                        Step
+                        (directions { Forward FL FR } of:All)
+                        (to
+                            if:(or (is Empty (to)) (is Enemy (who at:(to))))
+                            (apply (remove (to)))
+                        )
+                    )
+                    "CaptureEnemy"
+                    "Retreat"
+                    "SlideCannon"
+                    "Shoot"
+                    "LongShoot"
+                    } 
+                )
+            )
+            (piece "Town" Each)
+            (hand Each)
+            (regions P1 (sites Top))
+            (regions P2 (sites Bottom))
+        }
+    )
+    (rules
+        (start
+            {
+                (place "Town" "Hand" count:1)
+                (place "Pawn1" {"A2" "A3" "A4" "C2" "C3" "C4" "E2" "E3" "E4" "G2" "G3" "G4" "I2" "I3" "I4"})
+                (place "Pawn2" {"B7" "B8" "B9" "D7" "D8" "D9" "F7" "F8" "F9" "H7" "H8" "H9" "J7" "J8" "J9"})
+            }
+        )
+        phases:{
+            (phase "Placement"
+                (play
+                    (move
+                        (from (handSite Mover))
+                        (to (difference (expand (sites Next) steps:0 ) (sites Corners)))
+                    )
+                )
+                (nextPhase Mover "Movement")
+            )
+            (phase "Movement"
+                (play (forEach Piece))
+                (end {
+                        (if
+                            (no Moves Mover)    
+                            (result Mover Loss)
+                        )
+                        (if
+                            ("FallenTown")
+                            (result Next Loss)
+                        )
+                    
+                 
+                })
+            )
+        }
+    )
+)
+
+(metadata
+    (graphics
+            (board Style Chess)
+    )
+)
